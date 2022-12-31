@@ -11,6 +11,7 @@ Files in the Repo
 3. autogen.sh: Script used to generate the configure script. It's unclear when it is necessary to call this script or if it's even necessary.
 4. autom4te.cache: (directory) - Temporary directory used by the GNU Autotools build system when generating the 'configure' script.
 5. build-aux: (directory) - Contains auxiliary files and scripts used during the build process. 
+6. build-msvc: (directory) - Contains files/tools for building with MS Visual Studio
 
 Litecoin Core integration/staging tree
 =====================================
