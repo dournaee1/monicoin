@@ -8,7 +8,8 @@ Files in the Repo
 
 1. aclocal.m4: Some sort of automatically generated file. Some answer [here](https://stackoverflow.com/questions/1970926/whats-the-point-of-aclocal#1971156a)
 2. .appveyor.yml: Some sort of continuous integration file, looks to be for windows environments. The tool is made by [this](https://www.appveyor.com/docs/) company
-3. autogen.sh: Script used to generate the configure script. It's unclear when it is necessary to call this script or if it's even necessary. 
+3. autogen.sh: Script used to generate the configure script. It's unclear when it is necessary to call this script or if it's even necessary.
+4. autom4te.cache: (directory) - Temporary directory used by the GNU Autotools build system when generateing the 'configure' script 
 
 Litecoin Core integration/staging tree
 =====================================
