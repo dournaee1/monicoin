@@ -1,3 +1,8 @@
+Monicoin: This software is for entertainment purposes only
+===========================================================
+
+This is not a real cryptocurrency.
+
 Litecoin Core integration/staging tree
 =====================================
 
