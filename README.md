@@ -12,6 +12,7 @@ Files in the Repo
 4. autom4te.cache: (directory) - Temporary directory used by the GNU Autotools build system when generating the 'configure' script.
 5. build-aux: (directory) - Contains auxiliary files and scripts used during the build process. 
 6. build-msvc: (directory) - Contains files/tools for building with MS Visual Studio
+7. ci: (directory) - Contains scripts for each build stage. 
 
 Litecoin Core integration/staging tree
 =====================================
