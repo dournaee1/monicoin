@@ -3,6 +3,11 @@ Monicoin: This software is for entertainment purposes only
 
 This is not a real cryptocurrency.
 
+Files in the Repo
+=================
+
+1. aclocal: Some sort of automatically generated file. Some answer [here](https://stackoverflow.com/questions/1970926/whats-the-point-of-aclocal#1971156a)
+
 Litecoin Core integration/staging tree
 =====================================
 
