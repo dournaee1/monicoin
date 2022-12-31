@@ -7,6 +7,7 @@ Files in the Repo
 =================
 
 1. aclocal.m4: Some sort of automatically generated file. Some answer [here](https://stackoverflow.com/questions/1970926/whats-the-point-of-aclocal#1971156a)
+2. .appveyor.yml: Some sort of continuous integration file, looks to be for windows environments. The tool is made by [this](https://www.appveyor.com/docs/) company
 
 Litecoin Core integration/staging tree
 =====================================
