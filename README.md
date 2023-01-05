@@ -13,6 +13,22 @@ Files in the Repo
 5. build-aux: (directory) - Contains auxiliary files and scripts used during the build process. 
 6. build-msvc: (directory) - Contains files/tools for building with MS Visual Studio
 7. ci: (directory) - Contains scripts for each build stage. 
+8. .cirrus.yml: Used by Cirrus CI to automatically build and test the project every time code is pushed to the repository
+9. CODEOWNERS: File to denote who should review changes to various parts of the source code.
+10. config.log: Used for debugging errors during the build process
+
+
+Autotools Stuff
+===============
+
+So the steps generally go like this:
+
+1. Write configure.ac and Makefile.am and check them in. 
+2. Run autoconf to generate configure from configure.ac. 
+3. Run automake to generate Makefile.in from Makefile.am. 
+4. Run configure to generate Makefile from Makefile.in. 
+5. Run make to build the product.
+
 
 Litecoin Core integration/staging tree
 =====================================
