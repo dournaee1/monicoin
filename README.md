@@ -29,6 +29,11 @@ So the steps generally go like this:
 4. Run configure to generate Makefile from Makefile.in. 
 5. Run make to build the product.
 
+Minimal Configure
+=================
+
+1. This seems to help save disk space when we compile: ./configure --with-gui=no --disable-maintainer-mode --disable-tests
+
 
 Litecoin Core integration/staging tree
 =====================================
