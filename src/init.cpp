@@ -1273,12 +1273,14 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
     const ArgsManager& args = *Assert(node.args);
     const CChainParams& chainparams = Params();
  
-    printf("**** Made it to AppInitMain() People!\n");
+    printf("**** 14(a): Made it to AppInitMain() People!\n");
     // ********************************************************* Step 4a: application initialization
     if (!CreatePidFile(args)) {
         // Detailed error printed inside CreatePidFile().
         return false;
     }
+    printf("**** 14(b): After first if statement checking the value of CreatPidFile\n");
+
     if (LogInstance().m_print_to_file) {
         if (args.GetBoolArg("-shrinkdebugfile", LogInstance().DefaultShrinkDebugFile())) {
             // Do this first since it both loads a bunch of debug.log into memory,
@@ -1286,10 +1288,16 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
             LogInstance().ShrinkDebugFile();
         }
     }
+
+    printf("**** 14(c): After second if statement that checks the value of m_print_to_file\n");
+
     if (!LogInstance().StartLogging()) {
             return InitError(strprintf(Untranslated("Could not open debug log file %s"),
                 LogInstance().m_file_path.string()));
     }
+
+    printf("**** After call to LogInstance().StartLogging()\n");
+
 
     if (!LogInstance().m_log_timestamps)
         LogPrintf("Startup time: %s\n", FormatISO8601DateTime(GetTime()));
@@ -1351,6 +1359,7 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
 
     // Start the lightweight task scheduler thread
     threadGroup.create_thread([&] { TraceThread("scheduler", [&] { node.scheduler->serviceQueue(); }); });
+    printf("** Kicked off lightweight task scheduler thread\n");
 
     // Gather some entropy once per minute.
     node.scheduler->scheduleEvery([]{
