@@ -598,7 +598,7 @@ void SetupServerArgs(NodeContext& node)
 
 std::string LicenseInfo()
 {
-    const std::string URL_SOURCE_CODE = "<https://github.com/litecoin-project/litecoin>";
+    const std::string URL_SOURCE_CODE = "https://github.com/dournaee1/monicoin";
 
     return CopyrightHolders(strprintf(_("Copyright (C) %i-%i").translated, 2011, COPYRIGHT_YEAR) + " ") + "\n" +
            "\n" +
@@ -610,7 +610,7 @@ std::string LicenseInfo()
                URL_SOURCE_CODE) +
            "\n" +
            "\n" +
-           _("This is experimental software.").translated + "\n" +
+           _("This is experimental software. This is most definitely not a real crypto currency and for entertainment purposes only.").translated + "\n" +
            strprintf(_("Distributed under the MIT software license, see the accompanying file %s or %s").translated, "COPYING", "<https://opensource.org/licenses/MIT>") +
            "\n";
 }
@@ -1272,6 +1272,8 @@ bool AppInitMain(const util::Ref& context, NodeContext& node, interfaces::BlockA
 {
     const ArgsManager& args = *Assert(node.args);
     const CChainParams& chainparams = Params();
+ 
+    printf("**** Made it to AppInitMain() People!\n");
     // ********************************************************* Step 4a: application initialization
     if (!CreatePidFile(args)) {
         // Detailed error printed inside CreatePidFile().

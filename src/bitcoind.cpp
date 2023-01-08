@@ -39,6 +39,8 @@ static void WaitForShutdown(NodeContext& node)
 
 static bool AppInit(int argc, char* argv[])
 {
+    printf("1. Inside AppInit()!\n");
+
     NodeContext node;
 
     bool fRet = false;
@@ -68,21 +70,33 @@ static bool AppInit(int argc, char* argv[])
         return true;
     }
 
+    printf("* 2. Made it past processing help and version flags\n");
+
     util::Ref context{node};
     try
     {
-        if (!CheckDataDirOption()) {
+	printf("* 3. Inside try block\n");
+    
+	if (!CheckDataDirOption()) {
             return InitError(Untranslated(strprintf("Specified data directory \"%s\" does not exist.\n", args.GetArg("-datadir", ""))));
         }
+
+	printf("* 4. Past CheckDataDir() boolean check\n");
+
         if (!args.ReadConfigFiles(error, true)) {
             return InitError(Untranslated(strprintf("Error reading configuration file: %s\n", error)));
-        }
+	}
+
+	printf("* 5. Past ReadConfigFiles() args check\n");
+
         // Check for chain settings (Params() calls are only valid after this clause)
-        try {
+	try {
             SelectParams(args.GetChainName());
         } catch (const std::exception& e) {
             return InitError(Untranslated(strprintf("%s\n", e.what())));
-        }
+	}
+
+	printf("* 6. Past try/catch block for chain name\n");
 
         // Error out when loose non-argument tokens are encountered on command line
         for (int i = 1; i < argc; i++) {
@@ -99,8 +113,15 @@ static bool AppInit(int argc, char* argv[])
         // -server defaults to true for bitcoind but not for the GUI so do this here
         args.SoftSetBoolArg("-server", true);
         // Set this early so that parameter interactions go to console
-        InitLogging(args);
+        printf("* 7. Before InitLogging()\n");
+      	InitLogging(args);
+	printf("* 8. Before InitParameterInteraction()\n");
+
         InitParameterInteraction(args);
+
+	printf ("* 9. After InitParameterInteraction()\n");
+
+        printf ("* 10. Before three if statements with return false in them\n");	
         if (!AppInitBasicSetup(args)) {
             // InitError will have been called with detailed error, which ends up on console
             return false;
@@ -114,6 +135,7 @@ static bool AppInit(int argc, char* argv[])
             // InitError will have been called with detailed error, which ends up on console
             return false;
         }
+	printf ("* 11. After the three if statements with returns\n");
         if (args.GetBoolArg("-daemon", false)) {
 #if HAVE_DECL_DAEMON
 #if defined(MAC_OSX)
@@ -122,6 +144,8 @@ static bool AppInit(int argc, char* argv[])
 #endif
             tfm::format(std::cout, PACKAGE_NAME " starting\n");
 
+
+            printf("* 12. About to 'daemonize'\n");
             // Daemonize
             if (daemon(1, 0)) { // don't chdir (1), do close FDs (0)
                 return InitError(Untranslated(strprintf("daemon() failed: %s\n", strerror(errno))));
@@ -133,19 +157,27 @@ static bool AppInit(int argc, char* argv[])
             return InitError(Untranslated("-daemon is not supported on this operating system\n"));
 #endif // HAVE_DECL_DAEMON
         }
+
+        printf("* 13. Before AppInitLockDataDirectory() check\n");
         // Lock data directory after daemonization
         if (!AppInitLockDataDirectory())
         {
             // If locking the data directory failed, exit immediately
             return false;
         }
+	printf(" 14. Before AppInitInterfaces\n");
         fRet = AppInitInterfaces(node) && AppInitMain(context, node);
+	printf(" 15. After AppInitInterfaces\n");
+	printf(" fRet is: %d\n", fRet);
     }
     catch (const std::exception& e) {
         PrintExceptionContinue(&e, "AppInit()");
     } catch (...) {
         PrintExceptionContinue(nullptr, "AppInit()");
     }
+
+    printf("* 16. Made it past the try block and exception handling\n");
+
 
     if (!fRet)
     {
@@ -160,6 +192,7 @@ static bool AppInit(int argc, char* argv[])
 
 int main(int argc, char* argv[])
 {
+printf("Made it to main!\n");
 #ifdef WIN32
     util::WinCmdLineArgs winArgs;
     std::tie(argc, argv) = winArgs.get();
