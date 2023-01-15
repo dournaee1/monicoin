@@ -59,7 +59,7 @@ namespace BCLog {
         ALL         = ~(uint32_t)0,
     };
 
-    class Logger
+    class Logger   // Begin class definition
     {
     private:
         mutable StdMutex m_cs; // Can not use Mutex from sync.h because in debug mode it would cause a deadlock when a potential deadlock was detected

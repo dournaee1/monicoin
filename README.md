@@ -34,6 +34,11 @@ Minimal Configure
 
 1. This seems to help save disk space when we compile: ./configure --with-gui=no --disable-maintainer-mode --disable-tests
 
+Tracing the Code
+================
+
+1. bitcoin.cpp -> init.cpp
+
 
 Litecoin Core integration/staging tree
 =====================================
