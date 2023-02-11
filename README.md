@@ -34,6 +34,12 @@ Minimal Configure
 
 1. This seems to help save disk space when we compile: ./configure --with-gui=no --disable-maintainer-mode --disable-tests
 
+Minimal Execute
+===============
+
+1. To see what litecoind is doing without downloading the entire blockchain: ./litecoind -testnet
+
+
 Tracing the Code
 ================
 
