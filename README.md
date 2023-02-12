@@ -46,7 +46,7 @@ Tracing the Code
 1. bitcoind.cpp: Around like 169 or so, AppInitMain() is called; declaration defined init.h
 2. init.cpp -> AppInitMain() -> LogInstance().StartLogging() -> Logging.h (next is to understand the class def)
 3. logging.h: Logger class defined here
-4. logging.cpp: line 45 appears to be the next spot to trace from
+4. logging.cpp: line 45 appears to be the next spot to trace from; line 70 appears to be the string def, 's'
 
 
 Litecoin Core integration/staging tree
