@@ -43,7 +43,7 @@ Minimal Execute
 Tracing the Code
 ================
 
-1. bitcoin.cpp -> init.cpp -> AppInitMain() -> LogInstance() -> Logging.h (next is to understand the class def)
+1. bitcoind.cpp -> init.cpp -> AppInitMain() -> LogInstance() -> Logging.h (next is to understand the class def)
 
 
 Litecoin Core integration/staging tree
